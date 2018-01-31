@@ -41,3 +41,5 @@ This is `<html class="name"/>` link
 | -------- | -------- |
 | Barsik | Murzik |
 | Bars | Murz |
+| Barsik | Murzik |
+| Bars | Murz |
