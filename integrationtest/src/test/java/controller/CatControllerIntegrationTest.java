@@ -1,8 +1,7 @@
-package io.khasang.demo.controller;
+package controller;
 
 import io.khasang.demo.entity.Cat;
 import io.khasang.demo.entity.CatWoman;
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -42,7 +41,7 @@ public class CatControllerIntegrationTest {
     }
 
     @Test
-    public void getAllCats(){
+    public void getAllCats() {
         createCat();
         createCat();
 
@@ -62,7 +61,7 @@ public class CatControllerIntegrationTest {
     }
 
     @Test
-    public void catDelete(){
+    public void catDelete() {
         Cat cat = createCat();
 
         RestTemplate restTemplate = new RestTemplate();

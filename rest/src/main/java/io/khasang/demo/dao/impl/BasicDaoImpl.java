@@ -3,6 +3,7 @@ package io.khasang.demo.dao.impl;
 import io.khasang.demo.dao.BasicDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,13 +30,21 @@ public class BasicDaoImpl<T> implements BasicDao<T> {
 
     @Override
     public List<T> getList() {
+        Statistics statistics = sessionFactory.getStatistics();
+
+        if(!statistics.isStatisticsEnabled()) {
+            statistics.setStatisticsEnabled(true);
+        }
+
         CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = builder.createQuery(entityClass);
         Root<T> root = criteriaQuery.from(entityClass);
 
         criteriaQuery.select(root);
 
-        return sessionFactory.getCurrentSession().createQuery(criteriaQuery).list();
+        List<T> list = sessionFactory.getCurrentSession().createQuery(criteriaQuery).setCacheable(true).list();
+
+        return list;
     }
 
     @Override

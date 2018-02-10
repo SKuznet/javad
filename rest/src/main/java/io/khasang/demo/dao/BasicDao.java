@@ -1,6 +1,5 @@
 package io.khasang.demo.dao;
 
-import io.khasang.demo.entity.Cat;
 import org.hibernate.Session;
 
 import java.util.List;

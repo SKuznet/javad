@@ -1,4 +1,4 @@
-package io.khasang.demo.controller;
+package controller;
 
 public class AppControllerIntegrationTest {
 }
